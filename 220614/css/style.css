@@ -1,0 +1,139 @@
+:root {
+    --interface-height: 200px;
+    --nav-height: 100px;
+    --button-size: 80px;
+    --corner-radius: 10px;
+    --button-margin: 20px;
+    --fluid-color: lightgreen;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.body-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    width: 640px;
+    height: var(--interface-height);
+
+    /* background-color: white; */
+}
+
+.nav-wrapper {
+    position: absolute;
+    width: 100%;
+    height: var(--nav-height);
+    bottom: 0;
+
+    background-color: var(--fluid-color);
+    border-radius: var(--corner-radius) var(--corner-radius) 0 0;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px dashed white;
+}
+
+.button-unit {
+    position: relative;
+    width: var(--button-size);
+    height: var(--interface-height);
+    margin: 0px var(--button-margin) 0px var(--button-margin);
+    /* border: 1px dashed red; */
+
+    transition-duration: 0.5s;
+
+    --fluid-height: 0px;
+    --fluid-transition: 0px;
+    --glow-color: transparent;
+}
+
+.button-unit:hover {
+    --fluid-height: 30px;
+    --fluid-transition: 70px;
+    --glow-color: rgb(220, 255, 213);
+}
+
+.button-box {
+    position: absolute;
+    width: var(--button-size);
+    height: var(--button-size);
+    bottom: 0;
+
+    transform: translateY(calc(-1*var(--fluid-height)));
+    transition-duration: inherit;
+    background-color: var(--fluid-color);
+    box-shadow: 0 0 20px 5px var(--glow-color);
+    /* border: 1px dashed blue; */
+}
+
+.button-effect-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    transition-duration: inherit;
+}
+
+.effect-background {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: var(--fluid-height);
+    transition-duration: inherit;
+    background-color: var(--fluid-color);
+}
+
+.effect-cover-left {
+    position: absolute;
+    height: 100%;
+    width: var(--fluid-transition);
+    left: 0;
+    border-radius: 0 20px 20px 0;
+    transition-duration: inherit;
+    background-color: black;
+}
+
+.effect-cover-right {
+    position: absolute;
+    height: 100%;
+    width: var(--fluid-transition);
+    right: 0;
+    border-radius: 20px 0 0 20px;
+    transition-duration: inherit;
+    background-color: black;
+}
+
+.reflection-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    bottom: -10%;
+    clip-path: polygon(-100% 0, 200% 0, 200% 200%, -100% 200%);
+}
+
+.reflection {
+    position: absolute;
+    width: 100%;
+    height: 0;
+
+    top: 0;
+    box-shadow: 0 0 20px 5px var(--glow-color);
+}
