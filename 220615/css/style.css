@@ -60,6 +60,7 @@ body {
 
     transform-origin: 0% 0%;
     transition-duration: 0.3s;
+    border-radius: 10px;
 
     background-color: rgb(255, 255, 255);
 }
@@ -78,6 +79,7 @@ body {
     transform: var(--aspect-rotation) var(--offset) rotateY(-90deg) translateX(calc(-1*var(--t)));
     transform-origin: 0% 0%;
     transition-duration: 0.3s;
+    border-radius: 10px;
 
     background-color: rgb(52, 124, 49);
 }
@@ -85,7 +87,7 @@ body {
 .box-side span {
     position: absolute;
     bottom: -8px;
-    left: 0;
+    left: 3px;
     font-size: 40px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.781);
@@ -99,6 +101,50 @@ body {
     transform: var(--aspect-rotation) var(--offset) rotateX(-90deg);
     transform-origin: 0% 0%;
     transition-duration: 0.3s;
+    border-radius: 10px;
 
     background-color: rgb(32, 87, 31);
+}
+
+.box-back {
+    position: absolute;
+    width: var(--w);
+    height: var(--h);
+
+    transform: var(--aspect-rotation) translateZ(calc(-1*var(--t))) var(--offset);
+
+    transform-origin: 0% 0%;
+    transition-duration: 0.3s;
+    border-radius: 10px;
+
+    background-color: rgb(32, 87, 31);
+}
+
+.box-backside {
+    position: absolute;
+    width: var(--t);
+    height: var(--h);
+
+    transform: var(--aspect-rotation) var(--offset) rotateY(-90deg) translateX(calc(-1*var(--t))) translateZ(calc(-1*var(--w)));
+    transform-origin: 0% 0%;
+    transition-duration: 0.3s;
+    border-radius: 10px;
+
+    background-color: rgb(127, 175, 126);
+
+
+}
+
+.box-bottom {
+    position: absolute;
+    width: var(--w);
+    height: var(--t);
+
+    transform: var(--aspect-rotation) var(--offset) rotateX(-90deg) translateZ(var(--h));
+    transform-origin: 0% 0%;
+    transition-duration: 0.3s;
+    border-radius: 10px;
+
+    background-color: rgb(127, 175, 126);
+
 }
