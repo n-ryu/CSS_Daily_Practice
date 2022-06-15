@@ -1,0 +1,104 @@
+:root {
+    --w: 200px;
+    --h: 50px;
+    --t: 50px;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+body {
+    position: relative;
+    display: flex;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.body-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+
+    width: 500px;
+    height: 500px;
+    border: 1px dashed white;
+}
+
+.box {
+    position: relative;
+    width: 0;
+    height: calc(var(--h) * 0.94);
+    margin-top: 2px;
+    margin-bottom: 2px;
+    transform: translateX(-75px) translateY(15px);
+
+    transition-duration: 0.3s;
+
+    --aspect-rotation: rotateX(-20deg) rotateY(30deg);
+    --offset: translateZ(0px);
+}
+
+.box:hover {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    --offset: translateZ(20px);
+}
+
+.box-front {
+    position: absolute;
+    width: var(--w);
+    height: var(--h);
+
+    transform: var(--aspect-rotation) var(--offset);
+
+    transform-origin: 0% 0%;
+    transition-duration: 0.3s;
+
+    background-color: rgb(255, 255, 255);
+}
+
+.box-front span {
+    position: absolute;
+    left: 2px;
+    bottom: 0;
+}
+
+.box-side {
+    position: absolute;
+    width: var(--t);
+    height: var(--h);
+
+    transform: var(--aspect-rotation) var(--offset) rotateY(-90deg) translateX(calc(-1*var(--t)));
+    transform-origin: 0% 0%;
+    transition-duration: 0.3s;
+
+    background-color: rgb(52, 124, 49);
+}
+
+.box-side span {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    font-size: 40px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.781);
+}
+
+.box-top {
+    position: absolute;
+    width: var(--w);
+    height: var(--t);
+
+    transform: var(--aspect-rotation) var(--offset) rotateX(-90deg);
+    transform-origin: 0% 0%;
+    transition-duration: 0.3s;
+
+    background-color: rgb(32, 87, 31);
+}
