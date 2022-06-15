@@ -148,3 +148,27 @@ body {
     background-color: rgb(127, 175, 126);
 
 }
+
+.test {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+
+}
+
+.panel1 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    transform: translateZ(10px);
+}
+
+.panel2 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    transform: translateZ(-10px);
+}
