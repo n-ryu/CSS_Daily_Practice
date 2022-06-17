@@ -7,7 +7,6 @@ function setRotation(el) {
 
     el.style.setProperty('--orbit-angle', nextAngle);
     el.style.setProperty('--orbit-angle-degree', `${nextAngle}deg`);
-    console.log('hi');
 }
 
 function callRotation() {

@@ -56,7 +56,7 @@ body {
 
 #sun {
     --body-radius: 25px;
-    --bg-color: lightyellow;
+    --bg-color: lightyellow
 }
 
 #p1 {
@@ -125,8 +125,22 @@ body {
     left: calc(-1*var(--body-radius));
     background-color: var(--bg-color);
     transition-duration: 0.5s;
+
+    box-shadow: 0 0 30px 5px transparent, 0px calc(0.3*var(--body-radius)) calc(0.6*var(--body-radius)) calc(0.1*var(--body-radius)) rgba(0, 0, 0, 0.753) inset;
+    ;
 }
 
 .planet-visual:hover {
-    box-shadow: 0 0 30px 5px white;
+    box-shadow: 0 0 30px 5px white, 0px calc(0.3*var(--body-radius)) calc(0.6*var(--body-radius)) calc(0.1*var(--body-radius)) rgba(0, 0, 0, 0.753) inset;
+    ;
+}
+
+#sun .planet-visual {
+    box-shadow: 0 0 30px 5px transparent, 0px 0px calc(0.6*var(--body-radius)) calc(0.1*var(--body-radius)) rgba(0, 0, 0, 0.753) inset;
+    ;
+}
+
+#sun .planet-visual:hover {
+    box-shadow: 0 0 30px 5px rgba(255, 255, 255, 0.61), 0px 0px calc(0.6*var(--body-radius)) calc(0.1*var(--body-radius)) rgba(0, 0, 0, 0.753) inset;
+    ;
 }
