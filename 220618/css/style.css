@@ -1,0 +1,94 @@
+:root {
+    --bg-color: black;
+    --max-width: 800px;
+    --max-height: 500px;
+    --dice-size: 80px;
+    --half-size: 40px;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin: 0;
+    background-color: var(--bg-color);
+}
+
+div {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.body-wrapper {
+    position: relative;
+
+    width: 800px;
+    height: 500px;
+
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;
+}
+
+.button-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.table {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    border: 1px dashed white;
+}
+
+.dice {
+    position: relative;
+    margin: 10px;
+    width: var(--dice-size);
+    height: var(--dice-size);
+    transform-style: preserve-3d;
+    transform: none;
+    transition-duration: 1s;
+    --result: 1;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    transform-origin: var(--half-size) var(--half-size) 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 800px) {
+    .body-wrapper {
+        width: 100%;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .body-wrapper {
+        height: 100%;
+    }
+}

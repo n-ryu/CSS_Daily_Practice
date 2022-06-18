@@ -19,6 +19,7 @@ body {
 
 .body-wrapper {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     width: 300px;
@@ -30,6 +31,7 @@ body {
     position: relative;
     width: var(--size);
     height: var(--size);
+    margin: 20px;
     transform-style: preserve-3d;
     --rotation: rotate3d(1, 1, 1, 0deg);
     --base-rotation: rotateY(0deg);
