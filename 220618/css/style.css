@@ -4,6 +4,7 @@
     --max-height: 500px;
     --dice-size: 80px;
     --half-size: 40px;
+    --cursor-url: url(img/cursor_refresh.png), pointer;
 }
 
 body,
@@ -36,6 +37,18 @@ div {
     grid-template-rows: 50px 1fr 50px;
 }
 
+.header {
+    position: relative;
+}
+
+.indicator {
+    position: absolute;
+    bottom: 0;
+    text-align: left;
+    font-size: 30px;
+    color: white;
+}
+
 .button-wrapper {
     position: relative;
     width: 100%;
@@ -53,23 +66,33 @@ div {
     justify-content: center;
     flex-wrap: wrap;
 
-    border: 1px dashed white;
 }
+
+.dice-wrapper {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+.dice-wrapper-mini {}
+
 
 .dice {
     position: relative;
-    margin: 10px;
-    width: var(--dice-size);
+    margin: 15px;
+    width: 0;
     height: var(--dice-size);
+    transition-duration: 0s;
+    transition-timing-function: ease-out;
     transform-style: preserve-3d;
-    transform: none;
-    transition-duration: 1s;
     --result: 1;
+    --type: "";
+    opacity: 1;
+    --rotation: "";
+    --scale: "scale(0)";
+    transform: scale(0);
 }
 
-.dice:hover {
-    transform: rotate3d(1, 1, 1, 1800deg);
-}
 
 .face {
     position: absolute;
@@ -82,35 +105,177 @@ div {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition-duration: 0s;
+    transition-timing-function: ease-out;
 
-    box-shadow: 0 0 40px 0px rgb(255, 255, 255) inset;
+    /* box-shadow: 0 0 40px 0px rgb(255, 255, 255) inset; */
     background-color: rgb(165, 0, 0);
+}
+
+.face-selected {
+    transition-duration: 0.5s;
+    color: rgba(255, 255, 255, 0.199);
+}
+
+.dice-button {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    transition-duration: 0.3s;
+    cursor: var(--cursor-url);
+}
+
+.locked-button {
+    cursor: url(img/cursor_padlock.png), pointer;
+    background-color: rgba(0, 0, 0, 0.39);
 }
 
 .d4 {
-    box-shadow: 0 8px 40px -8px rgb(255, 255, 255) inset;
+    clip-path: polygon(50% 6.7%, 100% 93.3%, 0% 93.3%);
+    transform-origin: 50% 64.4% calc(-0.204*var(--dice-size));
+
+    box-shadow: 0 10px 50px -5px rgb(255, 255, 255) inset;
     background-color: rgb(165, 0, 0);
+    padding-top: 10px;
 }
 
 .d6 {
+    clip-path: none;
+    transform-origin: 50% 50% calc(-0.5*var(--dice-size));
+
     box-shadow: 0 0 40px -8px rgb(255, 255, 255) inset;
     background-color: rgb(255, 145, 0);
 }
 
 .d8 {
+    clip-path: polygon(50% 0, 100% 75%, 0% 75%);
+    transform-origin: 50% 50% calc(-0.345*var(--dice-size));
+
     box-shadow: 0 0 40px 0px rgb(255, 255, 255) inset;
     background-color: rgb(38, 165, 0);
 }
 
 .d12 {
+    clip-path: polygon(19.1% 40.4%, 50% 19.1%, 80.9% 40.4%, 69.1% 75.0%, 30.9% 75.0%);
+    transform-origin: 50% 50% calc(-0.395*var(--dice-size));
+
     box-shadow: 0 0 40px 0px rgb(255, 255, 255) inset;
     background-color: rgb(0, 38, 165);
 }
 
 .d20 {
+    clip-path: polygon(50% 19.1%, 80.9% 65.5%, 19.1% 65.5%);
+    transform-origin: 50% 50% calc(-0.4*var(--dice-size));
+
     box-shadow: 0 0 48px 0px rgb(255, 255, 255) inset;
     background-color: rgb(83, 0, 160);
+    font-size: 25px;
 }
+
+.interface-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.button-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 150px 1fr;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.dice-buttons {
+    justify-self: right;
+    margin: 20px;
+}
+
+.tool-buttons {
+    justify-self: left;
+    margin: 20px;
+
+}
+
+button {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    text-align: center;
+    background-color: white;
+    color: white;
+    border: none;
+    font-size: 10px;
+    transition-duration: 0.3s;
+}
+
+
+.button-d4 {
+    clip-path: polygon(50% 6.7%, 100% 93.3%, 0% 93.3%);
+    padding-top: 7px;
+    background-color: rgb(165, 0, 0);
+}
+
+.button-d6 {
+    clip-path: "";
+    background-color: rgb(255, 145, 0);
+}
+
+.button-d8 {
+    clip-path: polygon(50% 0%, 94% 25%, 94% 75%, 50% 100%, 6% 75%, 6% 25%);
+    background-color: rgb(38, 165, 0);
+}
+
+.button-d12 {
+    clip-path: polygon(100% 50%, 90.5% 79.4%, 65.5% 97.6%, 34.5% 97.6%, 9.5% 79.4%, 0% 50%, 9.5% 20.6%, 34.5% 2.4%, 65.5% 2.4%, 90.5% 20.6%);
+    background-color: rgb(0, 38, 165);
+
+}
+
+.button-d20 {
+    clip-path: polygon(50% 0%, 94% 25%, 94% 75%, 50% 100%, 6% 75%, 6% 25%);
+    background-color: rgb(83, 0, 160);
+}
+
+.button-roll {
+    color: black;
+    font-size: 20px;
+    width: 150px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.tool-roll {
+    background-image: url(img/refresh.png);
+    background-size: 30px 30px;
+    background-color: transparent;
+    opacity: 0.7;
+}
+
+.tool-erase {
+    background-image: url(img/close.png);
+    background-size: 30px 30px;
+    background-color: transparent;
+    opacity: 0.7;
+}
+
+.tool-lock {
+    background-image: url(img/lock.png);
+    background-size: 30px 30px;
+    background-color: transparent;
+    opacity: 0.7;
+}
+
+.button-selected {
+    opacity: 1;
+}
+
 
 @media screen and (max-width: 800px) {
     .body-wrapper {
