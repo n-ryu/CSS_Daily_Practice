@@ -267,6 +267,7 @@ function createDice(diceObject) {
     newDiceWrapper.appendChild(newDiceButton);
     rollDice(newDice);
     newDice.style.width = `calc(${diceObject.width}*var(--dice-size))`;
+    newDice.style.margin = "15px";
     newDice.style.transform = "var(--scale) var(--rotation)";
 }
 
